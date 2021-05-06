@@ -4,16 +4,18 @@ const Data = require('./Data.model');
 module.exports.CreateData=(req,res)=>{
     const data = new Data();
     const {UUID,InitialBalance,TransportFare} = req.body;
+    const NewBalance = (InitialBalance - TransportFare);
     data.UUID = UUID;
     data.InitialBalance = InitialBalance;
     data.TransportFare = TransportFare;
+    data.NewBalance = NewBalance;
     data.save();
     console.log(data);
     res.send(data);
 }
 
-module.exports.readData=(_,res)=>{
-    const data = Data.find();
+module.exports.readData= async(_,res)=>{
+    const data = await Data.find();
     if(data){
       console.log(data);
       res.send(data).status(200);

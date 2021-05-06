@@ -8,7 +8,7 @@ const DataSchema = new Schema({
         required:true
     },
     InitialBalance:{
-        type:String,
+        type:Number,
         required:true
     },
     TransportFare:{
@@ -18,6 +18,10 @@ const DataSchema = new Schema({
     Date:{
         type:Date,
         default:new Date()
+    },
+    NewBalance:{
+        type:Number,
+        required:true
     }
 })
 

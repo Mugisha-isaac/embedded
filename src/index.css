@@ -1,0 +1,19 @@
+.welcome-page{
+    color: yellow;
+    font-size: 38px;
+    text-align: center;
+    margin-left: 5em;
+}
+.container{
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    background: #b8b6b0;
+    margin-top: 3em;
+}
+.table{
+    margin: 2em;
+}
+.t-data{
+    margin-left: 3em;
+}
