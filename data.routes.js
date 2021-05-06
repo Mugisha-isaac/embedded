@@ -4,3 +4,6 @@ const router = express.Router();
 const {CreateData,readData} = require('./data.controller');
 
 router.route('/').post(CreateData).get(readData);
+
+module.exports.dataRoutes = router;
+

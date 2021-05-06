@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 const Data = require('./Data.model');
 
-
 module.exports.CreateData=(req,res)=>{
     const data = new Data();
-    const {UUID,InitialBalance,TransportFare} = req;
+    const {UUID,InitialBalance,TransportFare} = req.body;
     data.UUID = UUID;
     data.InitialBalance = InitialBalance;
     data.TransportFare = TransportFare;
     data.save();
+    console.log(data);
     res.send(data);
 }
 
-module.exports.readData=(req,res)=>{
-    const data = Data.find();s
+module.exports.readData=(_,res)=>{
+    const data = Data.find();
     if(data){
+      console.log(data);
       res.send(data).status(200);
       return;
     }

@@ -20,3 +20,5 @@ const DataSchema = new Schema({
         default:new Date()
     }
 })
+
+module.exports = mongoose.model('Esp8266Module',DataSchema);
