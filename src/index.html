@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>RFID Transactions Using Esp8266</title>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+//         var io = io();
+//         io.on('sendToClient',(data)=>{
+//        console.log("HELO")
+//        console.log(data);
+//        io.emit('receivedFromClient', {my:'data'});
+//    })
+    </script>
 </head>
 <body>
     <div class="container">
-        <span class="welcome-page">Welcome,</span>
+        <!-- <span class="welcome-page">Welcome,</span> -->
         <div class="table">
-        <table style="width: 100%">
+        <table style="width: 100%" id="tbl">
             <tr>
                 <th>UUID</th>
                 <th>Initial Balance</th>
@@ -19,7 +28,7 @@
                 <th>New Balance</th>
                 <th>Date Of Creation</th>
             </tr>
-            <tr>
+            <tr class="t-data">
                 <td>E233ccc</td>
                 <td>50000</td>
                 <td>1000</td>
@@ -29,17 +38,9 @@
         </table>
         </div>
         <div>
-         <script>
-             var socket = io();
-             socket.on('sendToClient',(data)=>{
-            console.log("HELO")
-            console.log(data);
-            socket.emit('receivedFromClient', {my:'data'});
-        })
-         </script>
+       
         </div>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./data.js"></script>
+    <script src="data.js"></script>
 </body>
 </html>

@@ -1,8 +1,10 @@
 const app =require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const http = require('http').Server();
-var io = require('socket.io')(http);
+const socketio = require('socket.io');
+// const http = require('http').Server();
+// var io = require('socket.io')(http);
+const http = require('http');
 const express = require('express');
 const path = require('path');
 
@@ -10,6 +12,10 @@ const DbConnection = require('./db.model');
 const {dataRoutes} = require('./data.routes');
 const port = process.env.PORT || 3000;
  
+const server = http.createServer(app);
+const io = socketio(server);
+
+
 io.on('connection',(socket)=>{
     console.log('client connection received');
     socket.emit('sendToClient', {hello:'world'});
@@ -25,14 +31,13 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname,'./src')));
 
-app.get('/',(_,res)=>{
- res.sendFile(__dirname,'/index.html');
-})
 
 app.use('/esp8266',dataRoutes);
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`server is running on port: ${port}`);
 })
+module.exports = io;
+
 
 

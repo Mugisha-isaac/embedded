@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Data = require('./Data.model');
 
+
 module.exports.CreateData=(req,res)=>{
+    const io = require('./index');
+
     const data = new Data();
     const {UUID,InitialBalance,TransportFare} = req.body;
     const NewBalance = (InitialBalance - TransportFare);
@@ -11,6 +14,8 @@ module.exports.CreateData=(req,res)=>{
     data.NewBalance = NewBalance;
     data.save();
     console.log(data);
+
+    io.emit('DATA_SAVED', data);
     res.send(data);
 }
 
