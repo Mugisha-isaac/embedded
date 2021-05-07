@@ -17,7 +17,7 @@ const DataSchema = new Schema({
     },
     Date:{
         type:Date,
-        default:new Date()
+        default:new Date(Date.now()).toISOString()
     },
     NewBalance:{
         type:Number,
